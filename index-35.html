@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ofertas de Voos — Passagens baratas direto no seu Telegram</title>
+<meta name="description" content="Receba diariamente as melhores ofertas de passagens aéreas direto no seu Telegram, de graça. Curadoria manual, sem spam, cancele quando quiser.">
+<link rel="canonical" href="https://ofertasdevoos.com/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Ofertas de Voos — Passagens baratas direto no seu Telegram">
+<meta property="og:description" content="Receba diariamente as melhores ofertas de passagens aéreas direto no seu Telegram, de graça. Curadoria manual, sem spam, cancele quando quiser.">
+<meta property="og:url" content="https://ofertasdevoos.com/">
+<meta property="og:image" content="https://ofertasdevoos.com/logo.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ofertas de Voos — Passagens baratas direto no seu Telegram">
+<meta name="twitter:description" content="Receba diariamente as melhores ofertas de passagens aéreas direto no seu Telegram, de graça.">
+<meta name="twitter:image" content="https://ofertasdevoos.com/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#ffffff;
+    --cloud:#eef4ff;
+    --cloud-line:#d7e3fb;
+    --ink:#0b1f3a;
+    --ink-soft:#4b5b78;
+    --sky-deep:#043bb0;
+    --sky:#0354f6;
+    --sky-light:#4b86ff;
+    --sunset:#0354f6;
+    --sunset-dark:#043bb0;
+    --teal:#12b39c;
+    --teal-light:#4fe9d8;
+    --teal-bg:#e2faf6;
+    --radius-board:14px;
+    --radius-pass:20px;
+    --maxw:1160px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Manrope',sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Sora',sans-serif;
+    color:var(--ink);
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--sunset);
+    color:var(--white);
+    font-family:'Manrope',sans-serif;
+    font-weight:700;
+    font-size:1.02rem;
+    padding:16px 30px;
+    border-radius:100px;
+    text-decoration:none;
+    border:none;
+    cursor:pointer;
+    box-shadow:0 10px 24px -8px rgba(255,122,69,0.55);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 14px 28px -8px rgba(255,122,69,0.6);}
+  .btn-ghost{
+    background:transparent;
+    color:var(--sky-deep);
+    box-shadow:none;
+    border:1.5px solid var(--cloud-line);
+  }
+  .btn-ghost:hover{border-color:var(--sky-light);transform:none;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;top:0;z-index:40;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--cloud-line);
+  }
+  .headbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 28px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;font-size:1.15rem;text-decoration:none;color:var(--ink);}
+  .brand-mark{width:40px;height:40px;flex-shrink:0;border-radius:10px;overflow:hidden;}
+  .brand-mark img{width:100%;height:100%;object-fit:cover;display:block;}
+  .brand span{color:var(--sky)}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:linear-gradient(180deg,var(--cloud) 0%, var(--white) 78%);
+    padding:64px 0 40px;
+    overflow:hidden;
+    position:relative;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+    position:relative;
+    z-index:1;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem,4vw,3.1rem);
+    line-height:1.12;
+    font-weight:800;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--sky-deep);
+  }
+  .hero p.lead{
+    margin:22px 0 30px;
+    font-size:1.12rem;
+    color:var(--ink-soft);
+    max-width:46ch;
+  }
+  .hero-cta-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+  .hero-note{font-size:0.9rem;color:var(--ink-soft);margin-top:14px;}
+
+  /* ---------- HERO BACKDROP MOTION ---------- */
+  .hero-backdrop{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    overflow:hidden;
+  }
+  .cloud-blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(40px);
+    opacity:0.55;
+  }
+  .cloud-blob.c1{width:340px;height:340px;background:radial-gradient(circle,rgba(75,134,255,0.35),transparent 70%);top:-80px;left:-60px;animation:driftA 22s ease-in-out infinite;}
+  .cloud-blob.c2{width:260px;height:260px;background:radial-gradient(circle,rgba(79,233,216,0.3),transparent 70%);bottom:-60px;right:6%;animation:driftB 18s ease-in-out infinite;}
+  .cloud-blob.c3{width:180px;height:180px;background:radial-gradient(circle,rgba(3,84,246,0.18),transparent 70%);top:30%;right:28%;animation:driftA 26s ease-in-out infinite reverse;}
+  @keyframes driftA{0%,100%{transform:translate(0,0);}50%{transform:translate(30px,20px);}}
+  @keyframes driftB{0%,100%{transform:translate(0,0);}50%{transform:translate(-24px,-16px);}}
+
+  @media (prefers-reduced-motion: reduce){
+    .cloud-blob{animation:none !important;}
+  }
+
+  /* floating brand badge */
+  .logo-badge{
+    position:absolute;
+    top:-20px;left:-16px;
+    width:64px;height:64px;
+    border-radius:16px;
+    background:var(--white);
+    box-shadow:0 14px 28px -10px rgba(11,31,58,0.35);
+    padding:7px;
+    z-index:3;
+    animation:bob 4.5s ease-in-out infinite;
+  }
+  .logo-badge img{width:100%;height:100%;border-radius:10px;object-fit:cover;}
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg);}50%{transform:translateY(-10px) rotate(2deg);}}
+  @media (prefers-reduced-motion: reduce){.logo-badge{animation:none;}}
+
+  /* ---------- PHONE MOCKUP ---------- */
+  .phone{
+    width:250px;
+    height:508px;
+    margin:0 auto;
+    background:#0b1b30;
+    border-radius:42px;
+    padding:12px;
+    box-shadow:0 34px 60px -20px rgba(15,36,64,0.5);
+    position:relative;
+  }
+  .phone::before{
+    content:"";
+    position:absolute;inset:0;
+    border-radius:42px;
+    padding:1.5px;
+    background:linear-gradient(160deg,rgba(255,255,255,0.25),rgba(255,255,255,0));
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;
+    pointer-events:none;
+  }
+  .phone-screen{
+    width:100%;height:100%;
+    border-radius:32px;
+    overflow:hidden;
+    position:relative;
+    background:linear-gradient(160deg,var(--sky) 0%, var(--sky-deep) 55%, #041f5c 100%);
+  }
+  .phone-notch{
+    position:absolute;
+    top:12px;left:50%;
+    transform:translateX(-50%);
+    width:86px;height:22px;
+    background:#0b1b30;
+    border-radius:14px;
+    z-index:5;
+  }
+  .phone-statusbar{
+    display:flex;justify-content:space-between;
+    padding:20px 22px 0;
+    color:#fff;
+    font-family:'Sora',sans-serif;
+    font-size:0.78rem;
+    font-weight:600;
+  }
+  .phone-time{opacity:0.95;}
+  .phone-icons{opacity:0.8;letter-spacing:2px;}
+  .phone-lockclock{
+    text-align:center;
+    color:#fff;
+    margin-top:34px;
+  }
+  .phone-lockclock .big-time{
+    font-family:'Sora',sans-serif;
+    font-weight:800;
+    font-size:2.6rem;
+    line-height:1;
+  }
+  .phone-lockclock .date{
+    font-size:0.85rem;
+    opacity:0.85;
+    margin-top:4px;
+  }
+  .notif-slot{
+    position:absolute;
+    left:14px;right:14px;
+    top:170px;
+  }
+  .notif-card{
+    background:rgba(255,255,255,0.94);
+    backdrop-filter:blur(6px);
+    border-radius:16px;
+    padding:13px 14px;
+    display:flex;
+    gap:11px;
+    align-items:flex-start;
+    box-shadow:0 14px 30px -12px rgba(0,0,0,0.45);
+    opacity:0;
+    transform:translateY(-24px) scale(0.97);
+    transition:opacity .5s ease, transform .5s cubic-bezier(.2,.8,.2,1);
+  }
+  .notif-card.show{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+  .notif-icon{
+    width:34px;height:34px;
+    border-radius:9px;
+    overflow:hidden;
+    flex-shrink:0;
+  }
+  .notif-icon img{width:100%;height:100%;object-fit:cover;}
+  .notif-body{flex:1;min-width:0;}
+  .notif-top{
+    display:flex;justify-content:space-between;
+    align-items:baseline;
+    gap:8px;
+  }
+  .notif-app{
+    font-family:'Sora',sans-serif;
+    font-weight:700;
+    font-size:0.8rem;
+    color:var(--ink);
+  }
+  .notif-time{font-size:0.7rem;color:var(--ink-soft);flex-shrink:0;}
+  .notif-msg{
+    font-size:0.82rem;
+    color:var(--ink);
+    margin-top:2px;
+    line-height:1.35;
+  }
+  .notif-msg b{color:var(--sky-deep);}
+  @media (prefers-reduced-motion: reduce){
+    .notif-card{transition:none;}
+  }
+
+  /* ---------- DESTINATION STRIP ---------- */
+  .ticker{
+    background:var(--white);
+    border-top:1px solid var(--cloud-line);
+    border-bottom:1px solid var(--cloud-line);
+    padding:38px 0 34px;
+    position:relative;
+  }
+  .ticker-label{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    justify-content:center;
+    margin-bottom:22px;
+    font-family:'Space Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+  }
+  .ticker-label .live-dot{
+    width:7px;height:7px;
+    border-radius:50%;
+    background:var(--teal);
+    box-shadow:0 0 0 0 rgba(18,179,156,0.5);
+    animation:livePing 1.8s ease-out infinite;
+  }
+  @keyframes livePing{
+    0%{box-shadow:0 0 0 0 rgba(18,179,156,0.45);}
+    70%{box-shadow:0 0 0 8px rgba(18,179,156,0);}
+    100%{box-shadow:0 0 0 0 rgba(18,179,156,0);}
+  }
+  .ticker-viewport{
+    overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 6%,#000 94%,transparent 100%);
+    mask-image:linear-gradient(90deg,transparent 0%,#000 6%,#000 94%,transparent 100%);
+  }
+  .ticker-track{
+    display:flex;
+    align-items:center;
+    width:max-content;
+    animation:tickerScroll 18s linear infinite;
+  }
+  .dest-word{
+    display:inline-flex;
+    align-items:center;
+    gap:14px;
+    flex-shrink:0;
+    font-family:'Sora',sans-serif;
+    font-weight:700;
+    font-size:1rem;
+    letter-spacing:0.005em;
+    white-space:nowrap;
+    padding:6px 28px;
+    color:var(--ink);
+    border-right:1px solid var(--cloud-line);
+  }
+  .dest-word .globe{
+    width:54px;height:54px;
+    flex-shrink:0;
+    filter:drop-shadow(0 2px 4px rgba(10,15,25,0.25));
+  }
+  @keyframes tickerScroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ticker-track{animation:none;}
+    .ticker-label .live-dot{animation:none;}
+  }
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+  }
+
+  /* ---------- STATS ---------- */
+  .stats{background:var(--cloud);border-top:1px solid var(--cloud-line);border-bottom:1px solid var(--cloud-line);}
+  .stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:32px;
+    text-align:center;
+  }
+  .stat{display:flex;flex-direction:column;align-items:center;}
+  .stat b{
+    font-family:'Sora',sans-serif;
+    font-size:clamp(2rem,3.4vw,2.6rem);
+    font-weight:800;
+    color:var(--sky-deep);
+  }
+  .stat > b{
+    height:104px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:6px;
+  }
+  .stat span{color:var(--ink-soft);font-size:0.92rem;}
+  @media (max-width:920px){.stats-grid{grid-template-columns:1fr 1fr;row-gap:36px;}}
+
+  .radar-ring{
+    position:relative;
+    width:104px;height:104px;
+    margin:0 0 6px;
+    border-radius:50%;
+    border:2px solid rgba(3,84,246,0.22);
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+    background:radial-gradient(circle,rgba(3,84,246,0.05),transparent 70%);
+  }
+  .radar-ring::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:conic-gradient(from 0deg, rgba(3,84,246,0.55), rgba(3,84,246,0.12) 18%, transparent 40%);
+    animation:radarSpin 2.6s linear infinite;
+  }
+  .radar-ring b{position:relative; z-index:1; margin:0;}
+  @keyframes radarSpin{ to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce){
+    .radar-ring::before{animation:none;}
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:88px 0;}
+  .section-head{max-width:640px;margin:0 0 48px;}
+  .section-head h2{font-size:clamp(1.7rem,3vw,2.3rem);}
+  .section-head p{color:var(--ink-soft);margin-top:14px;font-size:1.05rem;}
+
+  /* ---------- STEPS ---------- */
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
+    position:relative;
+  }
+  .step{position:relative;padding:0 26px 0 0;}
+  .step:not(:last-child)::after{
+    content:"";
+    position:absolute;
+    top:22px;right:-4px;
+    width:calc(100% - 26px);
+    border-top:2px dashed var(--cloud-line);
+  }
+  .step-num{
+    width:44px;height:44px;
+    border-radius:50%;
+    background:var(--sky-deep);
+    color:#fff;
+    font-family:'Sora',sans-serif;
+    font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:20px;
+    position:relative;z-index:2;
+  }
+  .step h3{font-size:1.18rem;margin-bottom:10px;}
+  .step p{color:var(--ink-soft);font-size:0.98rem;margin:0;}
+
+  /* ---------- BOARDING PASSES ---------- */
+  .passes-viewport{
+    overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 4%,#000 96%,transparent 100%);
+    mask-image:linear-gradient(90deg,transparent 0%,#000 4%,#000 96%,transparent 100%);
+  }
+  .passes{
+    display:flex;
+    width:max-content;
+    padding:6px 4px 22px;
+    animation:passesScroll 16.5s linear infinite;
+  }
+  .passes:hover{animation-play-state:paused;}
+  @keyframes passesScroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .passes{
+      animation:none;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+    }
+    .passes .pass.dup{display:none;}
+  }
+  .pass{
+    scroll-snap-align:start;
+    flex:0 0 320px;
+    margin-right:26px;
+    background:var(--cloud);
+    border-radius:var(--radius-pass);
+    display:flex;
+    position:relative;
+    border:1px solid var(--cloud-line);
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .pass:hover{
+    transform:translateY(-8px) rotate(-0.6deg);
+    box-shadow:0 22px 40px -18px rgba(11,31,58,0.35);
+    border-color:var(--sky-light);
+  }
+  .pass-main{
+    flex:1;
+    padding:24px 22px;
+    position:relative;
+  }
+  .pass-stub{
+    width:96px;
+    flex-shrink:0;
+    background:var(--sky-deep);
+    border-radius:0 var(--radius-pass) var(--radius-pass) 0;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    font-family:'Space Mono',monospace;
+    gap:6px;
+    position:relative;
+  }
+  .pass-divider{
+    position:relative;
+    width:0;
+  }
+  .pass-divider::before,.pass-divider::after{
+    content:"";
+    position:absolute;
+    width:18px;height:18px;
+    background:var(--white);
+    border-radius:50%;
+    left:-9px;
+  }
+  .pass-divider::before{top:-9px;}
+  .pass-divider::after{bottom:-9px;}
+  .pass-route{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Sora',sans-serif;
+    font-weight:700;
+    font-size:1.15rem;
+    color:var(--sky-deep);
+  }
+  .pass-route .plane{color:var(--sunset);}
+  .pass-cities{color:var(--ink-soft);font-size:0.85rem;margin-top:4px;}
+  .pass-price{
+    margin-top:18px;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .pass-price .amount{
+    font-family:'Sora',sans-serif;
+    font-size:1.9rem;
+    font-weight:800;
+    color:var(--ink);
+  }
+  .pass-price .period{font-size:0.95rem;font-weight:600;color:var(--ink-soft);}
+  .pass-tag{
+    display:inline-block;
+    margin-top:10px;
+    font-size:0.78rem;
+    font-weight:700;
+    color:var(--teal);
+    background:var(--teal-bg);
+    padding:4px 10px;
+    border-radius:8px;
+  }
+  .pass-stub b{font-size:1.3rem;letter-spacing:0.04em;}
+  .pass-stub small{opacity:0.75;font-size:0.65rem;}
+
+  /* ---------- TRUST ---------- */
+  .trust{
+    background:var(--cloud);
+    border-top:1px solid var(--cloud-line);
+    border-bottom:1px solid var(--cloud-line);
+  }
+  .trust-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:start;
+  }
+  .trust-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:22px;}
+  .trust-list li{display:flex;gap:14px;align-items:flex-start;}
+  .trust-icon{
+    width:38px;height:38px;flex-shrink:0;
+    border-radius:10px;
+    background:var(--white);
+    border:1px solid var(--cloud-line);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .trust-list h3{font-size:1.02rem;margin-bottom:4px;}
+  .trust-list p{margin:0;color:var(--ink-soft);font-size:0.95rem;}
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    text-align:center;
+    background:linear-gradient(135deg,var(--sky-deep),var(--sky));
+    border-radius:28px;
+    padding:64px 32px;
+    color:#fff;
+    margin:0 28px;
+    position:relative;
+    overflow:hidden;
+  }
+  .final-cta h2{color:#fff;font-size:clamp(1.7rem,3.4vw,2.4rem);max-width:20ch;margin:0 auto 16px;position:relative;z-index:1;}
+  .final-cta p{color:#dceafb;max-width:44ch;margin:0 auto 30px;font-size:1.05rem;position:relative;z-index:1;}
+  .final-cta .btn{background:#fff;color:var(--sky-deep);box-shadow:0 14px 30px -10px rgba(0,0,0,0.35);position:relative;z-index:1;}
+  .final-cta .btn:hover{box-shadow:0 18px 34px -10px rgba(0,0,0,0.4);}
+  .final-cta .btn.pulse{animation:ctaBlink 1.8s ease-in-out infinite;}
+  @keyframes ctaBlink{
+    0%,100%{box-shadow:0 14px 30px -10px rgba(0,0,0,0.35), 0 0 0 0 rgba(255,255,255,0.55);}
+    50%{box-shadow:0 14px 30px -10px rgba(0,0,0,0.35), 0 0 0 10px rgba(255,255,255,0);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .final-cta .btn.pulse{animation:none;}
+  }
+
+  .plane-flyover{
+    position:absolute;
+    left:0; right:0; top:38px;
+    width:100%;
+    aspect-ratio:1200/140;
+    pointer-events:none;
+    z-index:1;
+  }
+  .plane-flyover svg{display:block; width:100%; height:100%;}
+  .hero-plane{
+    position:relative;
+    left:auto; right:auto; top:auto;
+    width:100%;
+    margin-bottom:6px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:48px 0 32px;}
+  .foot-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-top:28px;margin-top:28px;
+    border-top:1px solid var(--cloud-line);
+    color:var(--ink-soft);font-size:0.85rem;
+    flex-wrap:wrap;gap:12px;
+  }
+  .foot-brand{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;color:var(--ink);}
+  .foot-links{display:flex;gap:22px;}
+  .foot-links a{text-decoration:none;color:var(--ink-soft);font-size:0.9rem;}
+  .foot-links a:hover{color:var(--sky-deep);}
+  .disclosure{font-size:0.82rem;color:var(--ink-soft);max-width:62ch;margin-top:18px;}
+
+  @media (max-width:920px){
+    .hero-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr;gap:34px;}
+    .step:not(:last-child)::after{display:none;}
+    .trust-grid{grid-template-columns:1fr;gap:36px;}
+    .final-cta{margin:0 16px;}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Ofertas de Voos",
+  "url": "https://ofertasdevoos.com/",
+  "logo": "https://ofertasdevoos.com/logo.png",
+  "description": "Alertas diários e gratuitos de passagens aéreas baratas, enviados por Telegram."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Como funciona o Ofertas de Voos",
+  "step": [
+    { "@type": "HowToStep", "name": "Você entra no grupo", "text": "Entre gratuitamente no canal do Telegram." },
+    { "@type": "HowToStep", "name": "Nosso time busca as melhores ofertas", "text": "Buscamos diariamente as passagens mais baratas." },
+    { "@type": "HowToStep", "name": "E você recebe a oferta e reserva", "text": "Receba o alerta e reserve direto pelo link." }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header>
+  <div class="headbar wrap" style="padding-left:0;padding-right:0;">
+    <a href="#" class="brand" aria-label="Ofertas de Voos">
+      <span class="brand-mark"><img src="/logo.png" alt="Ofertas de Voos" width="40" height="40"></span>
+    </a>
+    <a href="https://t.me/ofertasdevoos" target="_blank" rel="noopener" class="btn btn-ghost" style="padding:11px 22px;font-size:0.92rem;">Entrar no grupo</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-backdrop">
+    <span class="cloud-blob c1"></span>
+    <span class="cloud-blob c2"></span>
+    <span class="cloud-blob c3"></span>
+  </div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="plane-flyover hero-plane" aria-hidden="true">
+        <svg viewBox="0 0 1200 140" preserveAspectRatio="xMidYMid meet">
+          <path id="planePath2" d="M -60 100 C 160 15, 340 145, 600 60 C 860 -25, 1040 125, 1260 35" fill="none" stroke="none"/>
+          <g id="planeIcon2" opacity="0" fill="#0e4f8a">
+            <path d="M34,0 L10,-3 L-2,-13 L-7,-13 L-2,-3 L-20,-3 L-25,-8 L-29,-8 L-26,0 L-29,8 L-25,8 L-20,3 L-2,3 L-7,13 L-2,13 L10,3 Z"/>
+            <animateMotion id="planeMotion2" dur="2.4s" begin="indefinite" fill="freeze" rotate="auto"><mpath href="#planePath2"/></animateMotion>
+            <animate id="planeFade2" attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.9;1" dur="2.4s" begin="indefinite" fill="freeze"/>
+          </g>
+        </svg>
+      </div>
+      <h1>As passagens mais baratas do Brasil, <em>na palma da sua mão.</em></h1>
+      <p class="lead">Um grupo 100% gratuito que garimpa o Skyscanner todos os dias e avisa assim que o preço despenca. Sem spam, sem enrolação — só a oferta, a rota e o link para comprar.</p>
+      <div class="hero-cta-row">
+        <a href="https://t.me/ofertasdevoos" target="_blank" rel="noopener" class="btn">Entrar no grupo grátis</a>
+        <a href="#como-funciona" class="btn btn-ghost">Como funciona</a>
+      </div>
+      <p class="hero-note">Grátis para sempre · sem cadastro · sem cartão</p>
+    </div>
+
+    <div class="phone-wrap">
+      <div class="phone" aria-label="Notificação de oferta no celular">
+        <span class="logo-badge"><img src="/logo.png" alt="Ofertas de Voos" width="64" height="64"></span>
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-statusbar">
+            <span class="phone-time">9:41</span>
+            <span class="phone-icons">•••</span>
+          </div>
+          <div class="phone-lockclock">
+            <div class="big-time" id="phone-clock">9:41</div>
+            <div class="date">Hoje</div>
+          </div>
+          <div class="notif-slot" id="notif-slot">
+            <div class="notif-card" id="notif-card">
+              <span class="notif-icon"><img src="/logo.png" alt="" width="34" height="34"></span>
+              <div class="notif-body">
+                <div class="notif-top">
+                  <span class="notif-app">Ofertas de Voos</span>
+                  <span class="notif-time" id="notif-time">agora</span>
+                </div>
+                <div class="notif-msg" id="notif-msg">Carregando oferta...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="wrap">
+    <div class="ticker-label"><span class="live-dot"></span>Para os melhores destinos do mundo</div>
+  </div>
+  <div class="ticker-viewport">
+    <div class="ticker-track" id="ticker-track"></div>
+  </div>
+</div>
+
+<section id="como-funciona">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Como funciona?</h2>
+      <p>São apenas três passos entre você e sua próxima passagem barata.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h3>Você entra no grupo</h3>
+        <p>Sem custo e sem cadastro. Um clique, o Telegram abre, e pronto — você já está dentro.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h3>Nosso time busca as melhores ofertas</h3>
+        <p>Todos os dias vasculhamos milhares de rotas no Skyscanner atrás de preços fora da curva.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h3>E você recebe a oferta e reserva.</h3>
+        <p>A oferta chega com origem, destino, preço e o link direto. Quem está no grupo garante o preço.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>O tipo de oferta que chega no seu grupo:</h2>
+      <p>Cada oferta vem com rota, preço e o link para reservar na hora — do jeito que apareceu no radar.</p>
+    </div>
+    <div class="passes-viewport">
+    <div class="passes">
+      <div class="pass reveal">
+        <div class="pass-main">
+          <div class="pass-route"><span class="plane">✈</span> GRU → MIA</div>
+          <div class="pass-cities">São Paulo → Miami 🇺🇸</div>
+          <div class="pass-price"><span class="amount">R$ 1.750</span><span class="period">ida e volta</span></div>
+          <span class="pass-tag">62% abaixo da média</span>
+        </div>
+        <div class="pass-divider"></div>
+        <div class="pass-stub">
+          <b>MIA</b>
+        </div>
+      </div>
+      <div class="pass reveal">
+        <div class="pass-main">
+          <div class="pass-route"><span class="plane">✈</span> VCP → LIS</div>
+          <div class="pass-cities">Campinas → Lisboa 🇵🇹</div>
+          <div class="pass-price"><span class="amount">R$ 2.899</span><span class="period">ida e volta</span></div>
+          <span class="pass-tag">Promoção relâmpago</span>
+        </div>
+        <div class="pass-divider"></div>
+        <div class="pass-stub">
+          <b>LIS</b>
+        </div>
+      </div>
+      <div class="pass reveal">
+        <div class="pass-main">
+          <div class="pass-route"><span class="plane">✈</span> GIG → JFK</div>
+          <div class="pass-cities">Rio de Janeiro → Nova York 🇺🇸</div>
+          <div class="pass-price"><span class="amount">R$ 2.150</span><span class="period">ida e volta</span></div>
+          <span class="pass-tag">Poucas vagas</span>
+        </div>
+        <div class="pass-divider"></div>
+        <div class="pass-stub">
+          <b>JFK</b>
+        </div>
+      </div>
+      <div class="pass reveal">
+        <div class="pass-main">
+          <div class="pass-route"><span class="plane">✈</span> GRU → CDG</div>
+          <div class="pass-cities">São Paulo → Paris 🇫🇷</div>
+          <div class="pass-price"><span class="amount">R$ 3.190</span><span class="period">ida e volta</span></div>
+          <span class="pass-tag">Alta temporada</span>
+        </div>
+        <div class="pass-divider"></div>
+        <div class="pass-stub">
+          <b>CDG</b>
+        </div>
+      </div>
+      <div class="pass reveal">
+        <div class="pass-main">
+          <div class="pass-route"><span class="plane">✈</span> GRU → PUJ</div>
+          <div class="pass-cities">São Paulo → Punta Cana 🇩🇴</div>
+          <div class="pass-price"><span class="amount">R$ 2.050</span><span class="period">ida e volta</span></div>
+          <span class="pass-tag">Muito raro</span>
+        </div>
+        <div class="pass-divider"></div>
+        <div class="pass-stub">
+          <b>PUJ</b>
+        </div>
+      </div>
+      <div class="pass reveal">
+        <div class="pass-main">
+          <div class="pass-route"><span class="plane">✈</span> GIG → SCL</div>
+          <div class="pass-cities">Rio de Janeiro → Santiago 🇨🇱</div>
+          <div class="pass-price"><span class="amount">R$ 980</span><span class="period">ida e volta</span></div>
+          <span class="pass-tag">De última hora</span>
+        </div>
+        <div class="pass-divider"></div>
+        <div class="pass-stub">
+          <b>SCL</b>
+        </div>
+      </div>
+      <div class="pass dup" aria-hidden="true">
+        <div class="pass-main">
+          <div class="pass-route"><span class="plane">✈</span> GRU → MIA</div>
+          <div class="pass-cities">São Paulo → Miami 🇺🇸</div>
+          <div class="pass-price"><span class="amount">R$ 1.750</span><span class="period">ida e volta</span></div>
+          <span class="pass-tag">62% abaixo da média</span>
+        </div>
+        <div class="pass-divider"></div>
+        <div class="pass-stub">
+          <b>MIA</b>
+        </div>
+      </div>
+      <div class="pass dup" aria-hidden="true">
+        <div class="pass-main">
+          <div class="pass-route"><span class="plane">✈</span> VCP → LIS</div>
+          <div class="pass-cities">Campinas → Lisboa 🇵🇹</div>
+          <div class="pass-price"><span class="amount">R$ 2.899</span><span class="period">ida e volta</span></div>
+          <span class="pass-tag">Promoção relâmpago</span>
+        </div>
+        <div class="pass-divider"></div>
+        <div class="pass-stub">
+          <b>LIS</b>
+        </div>
+      </div>
+      <div class="pass dup" aria-hidden="true">
+        <div class="pass-main">
+          <div class="pass-route"><span class="plane">✈</span> GIG → JFK</div>
+          <div class="pass-cities">Rio de Janeiro → Nova York 🇺🇸</div>
+          <div class="pass-price"><span class="amount">R$ 2.150</span><span class="period">ida e volta</span></div>
+          <span class="pass-tag">Poucas vagas</span>
+        </div>
+        <div class="pass-divider"></div>
+        <div class="pass-stub">
+          <b>JFK</b>
+        </div>
+      </div>
+      <div class="pass dup" aria-hidden="true">
+        <div class="pass-main">
+          <div class="pass-route"><span class="plane">✈</span> GRU → CDG</div>
+          <div class="pass-cities">São Paulo → Paris 🇫🇷</div>
+          <div class="pass-price"><span class="amount">R$ 3.190</span><span class="period">ida e volta</span></div>
+          <span class="pass-tag">Alta temporada</span>
+        </div>
+        <div class="pass-divider"></div>
+        <div class="pass-stub">
+          <b>CDG</b>
+        </div>
+      </div>
+      <div class="pass dup" aria-hidden="true">
+        <div class="pass-main">
+          <div class="pass-route"><span class="plane">✈</span> GRU → PUJ</div>
+          <div class="pass-cities">São Paulo → Punta Cana 🇩🇴</div>
+          <div class="pass-price"><span class="amount">R$ 2.050</span><span class="period">ida e volta</span></div>
+          <span class="pass-tag">Muito raro</span>
+        </div>
+        <div class="pass-divider"></div>
+        <div class="pass-stub">
+          <b>PUJ</b>
+        </div>
+      </div>
+      <div class="pass dup" aria-hidden="true">
+        <div class="pass-main">
+          <div class="pass-route"><span class="plane">✈</span> GIG → SCL</div>
+          <div class="pass-cities">Rio de Janeiro → Santiago 🇨🇱</div>
+          <div class="pass-price"><span class="amount">R$ 980</span><span class="period">ida e volta</span></div>
+          <span class="pass-tag">De última hora</span>
+        </div>
+        <div class="pass-divider"></div>
+        <div class="pass-stub">
+          <b>SCL</b>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap stats-grid">
+    <div class="stat reveal"><div class="radar-ring"><b data-count="24" data-suffix="h">24h</b></div><span>De radar ativo</span></div>
+    <div class="stat reveal"><b data-count="10" data-prefix="">10</b><span>Ofertas por dia</span></div>
+    <div class="stat reveal"><b data-count="100" data-suffix="%">100%</b><span>Das ofertas revisadas</span></div>
+    <div class="stat reveal"><b data-count="0" data-prefix="R$">R$0</b><span>De custo para participar</span></div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap trust-grid">
+    <div class="reveal">
+      <h2>Transparência antes de tudo</h2>
+      <p style="color:var(--ink-soft);margin-top:14px;">Sem letra miúda, é assim mesmo que o grupo funciona.</p>
+    </div>
+    <ul class="trust-list">
+      <li class="reveal">
+        <div class="trust-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="#043bb0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <h3>É e sempre será gratuito</h3>
+          <p>Nenhuma oferta fica trancada atrás de um plano pago. O grupo é aberto para qualquer pessoa.</p>
+        </div>
+      </li>
+      <li class="reveal">
+        <div class="trust-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2L21 7V12C21 17 17.5 20.5 12 22C6.5 20.5 3 17 3 12V7L12 2Z" stroke="#043bb0" stroke-width="2" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <h3>Sem spam, nunca</h3>
+          <p>Só oferta boa chega até você. Nada de mensagens em excesso ou propaganda disfarçada de alerta.</p>
+        </div>
+      </li>
+      <li class="reveal">
+        <div class="trust-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h13" stroke="#043bb0" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <h3>Curadoria, não robô solto</h3>
+          <p>As ofertas passam por conferência antes de ir pro grupo — sem preço quebrado ou rota sem sentido.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="entrar">
+  <div class="final-cta">
+    <h2>Sua próxima viagem pode custar bem menos do que você imagina.</h2>
+    <div class="plane-flyover" aria-hidden="true">
+      <svg viewBox="0 0 1200 140" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <filter id="planeShadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#03142b" flood-opacity="0.35"/>
+          </filter>
+        </defs>
+        <path id="planePath" d="M -60 100 C 160 15, 340 145, 600 60 C 860 -25, 1040 125, 1260 35" fill="none" stroke="none"/>
+        <g id="planeIcon" opacity="0" fill="#ffffff" filter="url(#planeShadow)">
+          <path d="M34,0 L10,-3 L-2,-13 L-7,-13 L-2,-3 L-20,-3 L-25,-8 L-29,-8 L-26,0 L-29,8 L-25,8 L-20,3 L-2,3 L-7,13 L-2,13 L10,3 Z"/>
+          <animateMotion id="planeMotion" dur="3.2s" begin="indefinite" fill="freeze" rotate="auto"><mpath href="#planePath"/></animateMotion>
+          <animate id="planeFade" attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.9;1" dur="3.2s" begin="indefinite" fill="freeze"/>
+        </g>
+      </svg>
+    </div>
+    <p>Entre no grupo, deixe o alerta te encontrar, e reserve antes que o preço volte ao normal.</p>
+    <a href="https://t.me/ofertasdevoos" target="_blank" rel="noopener" class="btn pulse">Entrar no grupo grátis</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <div class="foot-brand">
+        <span class="brand-mark" style="width:28px;height:28px;"><img src="/logo.png" alt="Ofertas de Voos" width="28" height="28"></span>
+        Ofertas de Voos
+      </div>
+      <div class="foot-links">
+        <a href="https://t.me/ofertasdevoos" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://instagram.com/ofertasdevoos">@ofertasdevoos</a>
+        <a href="#como-funciona">Como funciona</a>
+      </div>
+    </div>
+    <p class="disclosure">Ofertas de Voos é um projeto independente e não tem qualquer vínculo com companhias aéreas. Preços exibidos são exemplos ilustrativos e variam conforme disponibilidade.</p>
+    <p class="disclosure" style="margin-top:10px;">© 2026 Ofertas de Voos. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  const deals = [
+    {a:"GRU", b:"MIA", price:"R$ 1.750", tag:"OFERTA"},
+    {a:"VCP", b:"LIS", price:"R$ 2.899", tag:"OFERTA"},
+    {a:"GIG", b:"JFK", price:"R$ 2.150", tag:"OFERTA"},
+    {a:"GRU", b:"CDG", price:"R$ 3.190", tag:"OFERTA"},
+    {a:"GRU", b:"PUJ", price:"R$ 2.050", tag:"OFERTA"},
+    {a:"GIG", b:"SCL", price:"R$ 980", tag:"OFERTA"}
+  ];
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const flagOf = { MIA:'🇺🇸', LIS:'🇵🇹', JFK:'🇺🇸', CDG:'🇫🇷', PUJ:'🇩🇴', SCL:'🇨🇱' };
+
+  // ---- Relógio do celular ----
+  function updatePhoneClock() {
+    const now = new Date();
+    const hh = String(now.getHours()).padStart(2, '0');
+    const mm = String(now.getMinutes()).padStart(2, '0');
+    const time = `${hh}:${mm}`;
+    const timeEl = document.getElementById('phone-clock');
+    const barEl = document.querySelector('.phone-time');
+    if (timeEl) timeEl.textContent = time;
+    if (barEl) barEl.textContent = time;
+  }
+  updatePhoneClock();
+  setInterval(updatePhoneClock, 30000);
+
+  // ---- Notificação de oferta no celular ----
+  const notifCard = document.getElementById('notif-card');
+  const notifMsg = document.getElementById('notif-msg');
+  const notifTime = document.getElementById('notif-time');
+  let dealPointer = 0;
+
+  function showNotification() {
+    const deal = deals[dealPointer % deals.length];
+    dealPointer++;
+    const flag = flagOf[deal.b] || '';
+    notifMsg.innerHTML = `✈️ <b>${deal.a} → ${deal.b}</b> ${flag} por <b>${deal.price}</b> — ${deal.tag.toLowerCase()}`;
+    notifTime.textContent = 'agora';
+    notifCard.classList.add('show');
+  }
+
+  function hideNotification() {
+    notifCard.classList.remove('show');
+  }
+
+  if (reduceMotion) {
+    showNotification();
+  } else {
+    showNotification();
+    setInterval(() => {
+      hideNotification();
+      setTimeout(showNotification, 600);
+    }, 3400);
+  }
+
+  // ---- Faixa de destinos (globos) ----
+const GLOBE_IMG_0 = '/globe-0.png';
+  const GLOBE_IMG_1 = '/globe-1.png';
+  const GLOBE_IMG_2 = '/globe-2.png';
+  const GLOBE_IMG_3 = '/globe-3.png';
+  const GLOBE_IMG_4 = '/globe-4.png';
+  const GLOBE_IMG_5 = '/globe-5.png';
+
+  const destinations = [
+    { name:'Europa', img:GLOBE_IMG_0 },
+    { name:'Estados Unidos', img:GLOBE_IMG_1 },
+    { name:'Caribe', img:GLOBE_IMG_2 },
+    { name:'Ásia', img:GLOBE_IMG_3 },
+    { name:'América Latina', img:GLOBE_IMG_4 },
+    { name:'e muito mais', img:GLOBE_IMG_5 }
+  ];
+
+  const tickerTrack = document.getElementById('ticker-track');
+  const destHTML = destinations.map(d =>
+    `<span class="dest-word">${d.name}<img class="globe" src="${d.img}" alt="" aria-hidden="true" width="54" height="54" loading="lazy"></span>`
+  ).join('');
+  tickerTrack.innerHTML = destHTML + destHTML;
+
+  // ---- Contador animado das estatísticas ----
+  function animateCount(el) {
+    const target = parseInt(el.dataset.count, 10);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const duration = 1200;
+    const start = performance.now();
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const value = Math.round(target * (1 - Math.pow(1 - progress, 3)));
+      el.textContent = `${prefix}${value}${suffix}`;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    if (reduceMotion) {
+      el.textContent = `${prefix}${target}${suffix}`;
+    } else {
+      requestAnimationFrame(tick);
+    }
+  }
+
+  // ---- Scroll reveal ----
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          setTimeout(() => el.classList.add('in-view'), i * 60);
+          if (el.dataset.count) animateCount(el);
+          io.unobserve(el);
+        }
+      });
+    }, { threshold: 0.2 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => {
+      el.classList.add('in-view');
+      if (el.dataset.count) animateCount(el);
+    });
+  }
+
+  // ---- Aviãozinho sobrevoando o CTA final (dispara uma vez) ----
+  const finalCta = document.querySelector('.final-cta');
+  const planeMotion = document.getElementById('planeMotion');
+  const planeFade = document.getElementById('planeFade');
+  if (finalCta && planeMotion && planeFade && !reduceMotion) {
+    if ('IntersectionObserver' in window) {
+      const planeIo = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            planeMotion.beginElement();
+            planeFade.beginElement();
+            planeIo.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      planeIo.observe(finalCta);
+    }
+  }
+
+  // ---- Aviãozinho sobrevoando o topo da landing page (dispara ao carregar) ----
+  const planeMotion2 = document.getElementById('planeMotion2');
+  const planeFade2 = document.getElementById('planeFade2');
+  if (planeMotion2 && planeFade2 && !reduceMotion) {
+    setTimeout(() => {
+      planeMotion2.beginElement();
+      planeFade2.beginElement();
+    }, 500);
+  }
+</script>
+
+</body>
+</html>
