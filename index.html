@@ -584,6 +584,26 @@
   .trust-list h3{font-size:1.02rem;margin-bottom:4px;}
   .trust-list p{margin:0;color:var(--ink-soft);font-size:0.95rem;}
 
+  /* ---------- FAQ ---------- */
+  .faq{padding:70px 0;}
+  .faq h2{text-align:center;margin-bottom:36px;}
+  .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px;}
+  .faq-item{border:1px solid var(--cloud-line);border-radius:14px;background:var(--white);overflow:hidden;}
+  .faq-item summary{
+    list-style:none;cursor:pointer;padding:20px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    font-family:'Sora',sans-serif;font-weight:700;color:var(--ink);
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary .faq-plus{flex-shrink:0;width:22px;height:22px;position:relative;}
+  .faq-item summary .faq-plus::before,.faq-item summary .faq-plus::after{
+    content:"";position:absolute;background:var(--sky);border-radius:2px;transition:transform .2s ease;
+  }
+  .faq-item summary .faq-plus::before{width:14px;height:2.5px;top:50%;left:50%;transform:translate(-50%,-50%);}
+  .faq-item summary .faq-plus::after{width:2.5px;height:14px;top:50%;left:50%;transform:translate(-50%,-50%);}
+  .faq-item[open] summary .faq-plus::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0;}
+  .faq-item p{padding:0 24px 20px;color:var(--ink-soft);}
+
   /* ---------- FINAL CTA ---------- */
   .final-cta{
     text-align:center;
@@ -670,6 +690,44 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "O que é o Ofertas de Voos?",
+      "acceptedAnswer": { "@type": "Answer", "text": "É um grupo gratuito no Telegram que avisa diariamente sobre as melhores ofertas de passagens aéreas encontradas no Skyscanner. Você entra, ativa as notificações, e recebe o alerta assim que uma oferta boa aparece — sem precisar ficar pesquisando sozinho." }
+    },
+    {
+      "@type": "Question",
+      "name": "O grupo de ofertas é totalmente gratuito?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sim, sempre. Não existe plano pago, mensalidade ou oferta trancada atrás de assinatura. O grupo se sustenta pelos links de afiliado do Skyscanner — quando você compra a passagem por um deles, recebemos uma comissão da própria plataforma, sem custo nenhum a mais pra você." }
+    },
+    {
+      "@type": "Question",
+      "name": "O Ofertas de Voos é confiável?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sim. Somos transparentes sobre como o grupo funciona e como ganhamos dinheiro (links de afiliado do Skyscanner), cada oferta passa por conferência manual antes de ser publicada, e os links levam direto pra busca real no Skyscanner — sem intermediário, sem letra miúda." }
+    },
+    {
+      "@type": "Question",
+      "name": "Como vocês encontram essas ofertas?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Buscamos diariamente por passagens com preço fora da curva em diversas rotas e datas. Antes de qualquer oferta ir pro grupo, ela passa por uma conferência manual — sem preço quebrado, rota sem sentido ou disponibilidade duvidosa." }
+    },
+    {
+      "@type": "Question",
+      "name": "Para qual site o Ofertas de Voos redireciona os links?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Todos os links de oferta levam direto para o Skyscanner, já com a busca da rota e das datas do alerta preenchida. A compra em si é feita lá (ou na companhia/agência parceira que o Skyscanner indicar), nunca dentro do nosso grupo." }
+    },
+    {
+      "@type": "Question",
+      "name": "Vocês são agência de viagem?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Não. Somos um serviço de alertas e curadoria de ofertas — a compra da passagem é feita direto no Skyscanner ou na companhia/agência parceira, nunca com a gente. Não intermediamos pagamento, emissão ou atendimento da reserva." }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -701,7 +759,7 @@
         </svg>
       </div>
       <h1>As passagens mais baratas do Brasil, <em>na palma da sua mão.</em></h1>
-      <p class="lead">Um grupo 100% gratuito que garimpa o Skyscanner todos os dias e avisa assim que o preço despenca. Sem spam, sem enrolação — só a oferta, a rota e o link para comprar.</p>
+      <p class="lead">Um grupo 100% gratuito que garimpa o Skyscanner todos os dias e avisa no seu Telegram assim que o preço despenca. Sem spam, sem enrolação — só a oferta, a rota e o link para comprar.</p>
       <div class="hero-cta-row">
         <a href="https://t.me/ofertasdevoos" target="_blank" rel="noopener" class="btn">Entrar no grupo grátis</a>
         <a href="#como-funciona" class="btn btn-ghost">Como funciona</a>
@@ -1002,6 +1060,38 @@
   </div>
 </section>
 
+<section class="faq">
+  <div class="wrap">
+    <h2 class="reveal">Perguntas frequentes</h2>
+    <div class="faq-list">
+      <details class="faq-item reveal">
+        <summary>O que é o Ofertas de Voos?<span class="faq-plus"></span></summary>
+        <p>É um grupo gratuito no Telegram que avisa diariamente sobre as melhores ofertas de passagens aéreas encontradas no Skyscanner. Você entra, ativa as notificações, e recebe o alerta assim que uma oferta boa aparece — sem precisar ficar pesquisando sozinho.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>O grupo de ofertas é totalmente gratuito?<span class="faq-plus"></span></summary>
+        <p>Sim, sempre. Não existe plano pago, mensalidade ou oferta trancada atrás de assinatura. O grupo se sustenta pelos links de afiliado do Skyscanner — quando você compra a passagem por um deles, recebemos uma comissão da própria plataforma, sem custo nenhum a mais pra você.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>O Ofertas de Voos é confiável?<span class="faq-plus"></span></summary>
+        <p>Sim. Somos transparentes sobre como o grupo funciona e como ganhamos dinheiro (links de afiliado do Skyscanner), cada oferta passa por conferência manual antes de ser publicada, e os links levam direto pra busca real no Skyscanner — sem intermediário, sem letra miúda.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Como vocês encontram essas ofertas?<span class="faq-plus"></span></summary>
+        <p>Buscamos diariamente por passagens com preço fora da curva em diversas rotas e datas. Antes de qualquer oferta ir pro grupo, ela passa por uma conferência manual — sem preço quebrado, rota sem sentido ou disponibilidade duvidosa.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Para qual site o Ofertas de Voos redireciona os links?<span class="faq-plus"></span></summary>
+        <p>Todos os links de oferta levam direto para o Skyscanner, já com a busca da rota e das datas do alerta preenchida. A compra em si é feita lá (ou na companhia/agência parceira que o Skyscanner indicar), nunca dentro do nosso grupo.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Vocês são agência de viagem?<span class="faq-plus"></span></summary>
+        <p>Não. Somos um serviço de alertas e curadoria de ofertas — a compra da passagem é feita direto no Skyscanner ou na companhia/agência parceira, nunca com a gente. Não intermediamos pagamento, emissão ou atendimento da reserva.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <div class="foot-row">
@@ -1012,7 +1102,6 @@
       <div class="foot-links">
         <a href="https://t.me/ofertasdevoos" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 4.5 2.8 11.9c-1.2.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.4.8.8.8.5 0 .7-.2 1-.5l2.4-2.3 4.9 3.6c.9.5 1.5.2 1.8-.8l3.2-15c.3-1.2-.4-1.8-1.4-1.8zM8.6 14.1l9.4-6.9c.4-.3.9-.1.5.3l-8 8.1-.3 3.3z"/></svg>Telegram</a>
         <a href="https://instagram.com/ofertasdevoos"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c-2.7 0-3.05.01-4.12.06-1.06.05-1.79.22-2.43.47-.66.26-1.22.6-1.77 1.16-.56.55-.9 1.11-1.16 1.77-.25.64-.42 1.37-.47 2.43C2 8.95 2 9.3 2 12s.01 3.05.06 4.12c.05 1.06.22 1.79.47 2.43.26.66.6 1.22 1.16 1.77.55.56 1.11.9 1.77 1.16.64.25 1.37.42 2.43.47C8.95 22 9.3 22 12 22s3.05-.01 4.12-.06c1.06-.05 1.79-.22 2.43-.47.66-.26 1.22-.6 1.77-1.16.56-.55.9-1.11 1.16-1.77.25-.64.42-1.37.47-2.43.05-1.07.06-1.42.06-4.12s-.01-3.05-.06-4.12c-.05-1.06-.22-1.79-.47-2.43-.26-.66-.6-1.22-1.16-1.77-.55-.56-1.11-.9-1.77-1.16-.64-.25-1.37-.42-2.43-.47C15.05 2 14.7 2 12 2zm0 1.8c2.65 0 2.97.01 4.02.06.97.04 1.5.2 1.85.34.46.18.79.4 1.14.75.35.35.57.68.75 1.14.14.35.3.88.34 1.85.05 1.05.06 1.37.06 4.02s-.01 2.97-.06 4.02c-.04.97-.2 1.5-.34 1.85-.18.46-.4.79-.75 1.14-.35.35-.68.57-1.14.75-.35.14-.88.3-1.85.34-1.05.05-1.37.06-4.02.06s-2.97-.01-4.02-.06c-.97-.04-1.5-.2-1.85-.34-.46-.18-.79-.4-1.14-.75-.35-.35-.57-.68-.75-1.14-.14-.35-.3-.88-.34-1.85C3.81 14.97 3.8 14.65 3.8 12s.01-2.97.06-4.02c.04-.97.2-1.5.34-1.85.18-.46.4-.79.75-1.14.35-.35.68-.57 1.14-.75.35-.14.88-.3 1.85-.34C9.03 3.81 9.35 3.8 12 3.8zm0 3.05A5.15 5.15 0 1 0 12 17.1 5.15 5.15 0 0 0 12 6.85zm0 8.5a3.35 3.35 0 1 1 0-6.7 3.35 3.35 0 0 1 0 6.7zm5.35-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>@ofertasdevoos</a>
-        <a href="#como-funciona">Como funciona</a>
       </div>
     </div>
     <p class="disclosure">Ofertas de Voos é um projeto independente e não tem qualquer vínculo com companhias aéreas. Preços exibidos são exemplos ilustrativos e variam conforme disponibilidade.</p>
