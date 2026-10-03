@@ -106,7 +106,7 @@
   /* ---------- HERO ---------- */
   .hero{
     background:linear-gradient(180deg,var(--cloud) 0%, var(--white) 78%);
-    padding:64px 0 40px;
+    padding:32px 0 40px;
     overflow:hidden;
     position:relative;
   }
@@ -464,6 +464,9 @@
     width:max-content;
     padding:6px 4px 22px;
     animation:passesScroll 16.5s linear infinite;
+    will-change:transform;
+    transform:translateZ(0);
+    backface-visibility:hidden;
   }
   .passes:hover{animation-play-state:paused;}
   @keyframes passesScroll{
@@ -715,11 +718,11 @@
     {
       "@type": "Question",
       "name": "Como vocês encontram essas ofertas?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Possuímos um time especializado de buscas que mapeia diariamente as melhores passagens promocionais. Antes de qualquer oferta ir pro grupo, ela passa por uma cuidadosa análise." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Possuímos um time especializado de buscas que mapeia diariamente as melhores passagens promocionais. Antes de qualquer oferta ir para o grupo, ela passa por uma análise cuidadosa." }
     },
     {
       "@type": "Question",
-      "name": "Vocês são uma agência de viagem?",
+      "name": "Vocês são uma agência de viagens?",
       "acceptedAnswer": { "@type": "Answer", "text": "Não, somos um serviço gratuito de alertas de passagens promocionais. A compra da passagem é feita diretamente no site da companhia ou site parceiro dela, nunca conosco. Não intermediamos nenhum pagamento e emissão." }
     }
   ]
@@ -824,7 +827,7 @@
       <div class="step reveal">
         <div class="step-num">3</div>
         <h3>Você reserva.</h3>
-        <p>Quem está no grupo, garante o preço.</p>
+        <p>A oferta chega com origem, destino, preço e o link direto. Quem está no grupo, garante o preço.</p>
       </div>
     </div>
   </div>
@@ -1075,10 +1078,10 @@
       </details>
       <details class="faq-item reveal">
         <summary>Como vocês encontram essas ofertas?<span class="faq-plus"></span></summary>
-        <p>Possuímos um time especializado de buscas que mapeia diariamente as melhores passagens promocionais. Antes de qualquer oferta ir pro grupo, ela passa por uma cuidadosa análise.</p>
+        <p>Possuímos um time especializado de buscas que mapeia diariamente as melhores passagens promocionais. Antes de qualquer oferta ir para o grupo, ela passa por uma análise cuidadosa.</p>
       </details>
       <details class="faq-item reveal">
-        <summary>Vocês são uma agência de viagem?<span class="faq-plus"></span></summary>
+        <summary>Vocês são uma agência de viagens?<span class="faq-plus"></span></summary>
         <p>Não, somos um serviço gratuito de alertas de passagens promocionais. A compra da passagem é feita diretamente no site da companhia ou site parceiro dela, nunca conosco. Não intermediamos nenhum pagamento e emissão.</p>
       </details>
     </div>
