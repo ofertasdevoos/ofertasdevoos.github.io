@@ -465,13 +465,13 @@
     padding:6px 4px 22px;
     animation:passesScroll 16.5s linear infinite;
     will-change:transform;
-    transform:translateZ(0);
+    transform:translate3d(0,0,0);
     backface-visibility:hidden;
   }
   .passes:hover{animation-play-state:paused;}
   @keyframes passesScroll{
-    from{transform:translateX(0);}
-    to{transform:translateX(-50%);}
+    from{transform:translate3d(0,0,0);}
+    to{transform:translate3d(-50%,0,0);}
   }
   @media (prefers-reduced-motion: reduce){
     .passes{
@@ -491,6 +491,7 @@
     position:relative;
     border:1px solid var(--cloud-line);
     transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    transform:translateZ(0);
   }
   .pass:hover{
     transform:translateY(-8px) rotate(-0.6deg);
