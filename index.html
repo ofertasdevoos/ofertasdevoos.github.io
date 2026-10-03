@@ -88,10 +88,12 @@
   /* ---------- HEADER ---------- */
   header{
     position:sticky;top:0;z-index:40;
-    background:rgba(255,255,255,0.85);
+    background:var(--ink);
     backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--cloud-line);
+    border-bottom:1px solid rgba(255,255,255,0.08);
   }
+  .headbar .btn-ghost{color:#ffffff;border-color:rgba(255,255,255,0.4);}
+  .headbar .btn-ghost:hover{border-color:#ffffff;}
   .headbar{
     display:flex;align-items:center;justify-content:space-between;
     padding:16px 28px;
@@ -686,7 +688,7 @@
   "step": [
     { "@type": "HowToStep", "name": "Você entra no grupo", "text": "Entre gratuitamente no canal do Telegram." },
     { "@type": "HowToStep", "name": "Nosso time busca as melhores ofertas", "text": "Buscamos diariamente as passagens mais baratas." },
-    { "@type": "HowToStep", "name": "E você recebe a oferta e reserva", "text": "Receba o alerta e reserve direto pelo link." }
+    { "@type": "HowToStep", "name": "Você reserva", "text": "Receba o alerta e reserve direto pelo link." }
   ]
 }
 </script>
@@ -698,7 +700,7 @@
     {
       "@type": "Question",
       "name": "O que é o Ofertas de Voos?",
-      "acceptedAnswer": { "@type": "Answer", "text": "É um grupo gratuito no Telegram que avisa diariamente sobre as melhores ofertas de passagens aéreas encontradas no Skyscanner. Você entra, ativa as notificações, e recebe o alerta assim que uma oferta boa aparece — sem precisar ficar pesquisando sozinho." }
+      "acceptedAnswer": { "@type": "Answer", "text": "É um grupo gratuito no Telegram que avisa diariamente sobre as melhores ofertas de passagens aéreas. Você entra, ativa as notificações, e recebe o alerta assim que uma oferta boa aparece — sem precisar ficar pesquisando sozinho." }
     },
     {
       "@type": "Question",
@@ -708,22 +710,17 @@
     {
       "@type": "Question",
       "name": "O Ofertas de Voos é confiável?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Sim. Cada oferta passa por conferência manual antes de ser publicada, e os links levam direto pra busca real no Skyscanner — sem intermediário, sem letra miúda." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Com certeza. Apenas fazemos o mapeamento das melhores tarifas, e os links enviados já levam direto para a busca real." }
     },
     {
       "@type": "Question",
       "name": "Como vocês encontram essas ofertas?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Possuímos um time especializado de buscas que mapeia diariamente as melhores passagens promocionais. Antes de qualquer oferta ir pro grupo, ela passa por uma cuidadosa conferência." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Possuímos um time especializado de buscas que mapeia diariamente as melhores passagens promocionais. Antes de qualquer oferta ir pro grupo, ela passa por uma cuidadosa análise." }
     },
     {
       "@type": "Question",
-      "name": "Para qual site o Ofertas de Voos redireciona os links?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Todos os links de oferta levam direto para o Skyscanner, já com a busca da rota e das datas do alerta preenchida. A compra em si é feita na própria companhia aérea ou em site parceiro que o Skyscanner indicar, nunca dentro do nosso grupo." }
-    },
-    {
-      "@type": "Question",
-      "name": "Vocês são agência de viagem?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Não. Somos um serviço de alertas e curadoria de ofertas — a compra da passagem é feita direto no Skyscanner ou na companhia/site parceiro, nunca com a gente. Não intermediamos nenhum pagamento e emissão." }
+      "name": "Vocês são uma agência de viagem?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Não, somos um serviço gratuito de alertas de passagens promocionais. A compra da passagem é feita diretamente no site da companhia ou site parceiro dela, nunca conosco. Não intermediamos nenhum pagamento e emissão." }
     }
   ]
 }
@@ -759,7 +756,7 @@
         </svg>
       </div>
       <h1>As passagens mais baratas do Brasil, <em>na palma da sua mão.</em></h1>
-      <p class="lead">Um grupo 100% gratuito que garimpa o Skyscanner todos os dias e avisa no seu Telegram assim que o preço despenca. Sem spam, sem enrolação — só a oferta, a rota e o link para comprar.</p>
+      <p class="lead">Um grupo 100% gratuito que mapeia diariamente o mercado aéreo e avisa no seu Telegram assim que o preço das passagens cai!</p>
       <div class="hero-cta-row">
         <a href="https://t.me/ofertasdevoos" target="_blank" rel="noopener" class="btn">Entrar no grupo grátis</a>
         <a href="#como-funciona" class="btn btn-ghost">Como funciona</a>
@@ -822,22 +819,22 @@
       <div class="step reveal">
         <div class="step-num">2</div>
         <h3>Nosso time busca as melhores ofertas</h3>
-        <p>Todos os dias vasculhamos milhares de rotas no Skyscanner atrás de preços fora da curva.</p>
+        <p>Todos os dias vasculhamos milhares de rotas atrás de preços fora da curva.</p>
       </div>
       <div class="step reveal">
         <div class="step-num">3</div>
-        <h3>E você recebe a oferta e reserva.</h3>
-        <p>A oferta chega com origem, destino, preço e o link direto. Quem está no grupo garante o preço.</p>
+        <h3>Você reserva.</h3>
+        <p>Quem está no grupo, garante o preço.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section>
+<section style="padding-top:20px;">
   <div class="wrap">
     <div class="section-head reveal">
       <h2>O tipo de oferta que chega no seu grupo:</h2>
-      <p>Cada oferta vem com rota, preço e o link para reservar na hora — do jeito que apareceu no radar.</p>
+      <p>Cada oferta vem com rota, preço e o link para reservar na hora.</p>
     </div>
     <div class="passes-viewport">
     <div class="passes">
@@ -992,7 +989,7 @@
 
 <section class="stats">
   <div class="wrap stats-grid">
-    <div class="stat reveal"><div class="radar-ring"><b data-count="24" data-suffix="h">24h</b></div><span>De radar ativo</span></div>
+    <div class="stat reveal"><div class="radar-ring"><b data-count="24" data-suffix="h">24h</b></div><span>De mapeamento ativo</span></div>
     <div class="stat reveal"><b data-count="10" data-prefix="">10</b><span>Ofertas por dia</span></div>
     <div class="stat reveal"><b data-count="100" data-suffix="%">100%</b><span>Das ofertas revisadas</span></div>
     <div class="stat reveal"><b data-count="0" data-prefix="R$">R$0</b><span>De custo para participar</span></div>
@@ -1066,7 +1063,7 @@
     <div class="faq-list">
       <details class="faq-item reveal">
         <summary>O que é o Ofertas de Voos?<span class="faq-plus"></span></summary>
-        <p>É um grupo gratuito no Telegram que avisa diariamente sobre as melhores ofertas de passagens aéreas encontradas no Skyscanner. Você entra, ativa as notificações, e recebe o alerta assim que uma oferta boa aparece — sem precisar ficar pesquisando sozinho.</p>
+        <p>É um grupo gratuito no Telegram que avisa diariamente sobre as melhores ofertas de passagens aéreas. Você entra, ativa as notificações, e recebe o alerta assim que uma oferta boa aparece — sem precisar ficar pesquisando sozinho.</p>
       </details>
       <details class="faq-item reveal">
         <summary>O grupo de ofertas é totalmente gratuito?<span class="faq-plus"></span></summary>
@@ -1074,19 +1071,15 @@
       </details>
       <details class="faq-item reveal">
         <summary>O Ofertas de Voos é confiável?<span class="faq-plus"></span></summary>
-        <p>Sim. Cada oferta passa por conferência manual antes de ser publicada, e os links levam direto pra busca real no Skyscanner — sem intermediário, sem letra miúda.</p>
+        <p>Com certeza. Apenas fazemos o mapeamento das melhores tarifas, e os links enviados já levam direto para a busca real.</p>
       </details>
       <details class="faq-item reveal">
         <summary>Como vocês encontram essas ofertas?<span class="faq-plus"></span></summary>
-        <p>Possuímos um time especializado de buscas que mapeia diariamente as melhores passagens promocionais. Antes de qualquer oferta ir pro grupo, ela passa por uma cuidadosa conferência.</p>
+        <p>Possuímos um time especializado de buscas que mapeia diariamente as melhores passagens promocionais. Antes de qualquer oferta ir pro grupo, ela passa por uma cuidadosa análise.</p>
       </details>
       <details class="faq-item reveal">
-        <summary>Para qual site o Ofertas de Voos redireciona os links?<span class="faq-plus"></span></summary>
-        <p>Todos os links de oferta levam direto para o Skyscanner, já com a busca da rota e das datas do alerta preenchida. A compra em si é feita na própria companhia aérea ou em site parceiro que o Skyscanner indicar, nunca dentro do nosso grupo.</p>
-      </details>
-      <details class="faq-item reveal">
-        <summary>Vocês são agência de viagem?<span class="faq-plus"></span></summary>
-        <p>Não. Somos um serviço de alertas e curadoria de ofertas — a compra da passagem é feita direto no Skyscanner ou na companhia/site parceiro, nunca com a gente. Não intermediamos nenhum pagamento e emissão.</p>
+        <summary>Vocês são uma agência de viagem?<span class="faq-plus"></span></summary>
+        <p>Não, somos um serviço gratuito de alertas de passagens promocionais. A compra da passagem é feita diretamente no site da companhia ou site parceiro dela, nunca conosco. Não intermediamos nenhum pagamento e emissão.</p>
       </details>
     </div>
   </div>
