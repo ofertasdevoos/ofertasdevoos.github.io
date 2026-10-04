@@ -484,6 +484,7 @@
     border:1px solid var(--cloud-line);
     transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
     transform:translateZ(0);
+    will-change:opacity;
   }
   .pass:hover{
     transform:translateY(-8px) rotate(-0.6deg);
@@ -1118,7 +1119,7 @@
     let passesPos = 0;
     let passesPaused = false;
     const passesSpeed = 126 / 1000; // ~126px por segundo, equivalente ao ritmo original (16.5s por fileira)
-    const FADE_DIST = 90; // px de zona de esmaecimento apenas na entrada (direita)
+    const FADE_DIST = 50; // px de zona de esmaecimento apenas na entrada (direita)
     let halfWidth = 0;
     let viewportWidth = passesViewport.clientWidth;
     let cardBoxes = [];
