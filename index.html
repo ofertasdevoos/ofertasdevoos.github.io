@@ -463,15 +463,9 @@
     display:flex;
     width:max-content;
     padding:6px 4px 22px;
-    animation:passesScroll 16.5s linear infinite;
     will-change:transform;
     transform:translate3d(0,0,0);
     backface-visibility:hidden;
-  }
-  .passes:hover{animation-play-state:paused;}
-  @keyframes passesScroll{
-    from{transform:translate3d(0,0,0);}
-    to{transform:translate3d(-50%,0,0);}
   }
   @media (prefers-reduced-motion: reduce){
     .passes{
@@ -1118,6 +1112,31 @@
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const flagOf = { MIA:'🇺🇸', LIS:'🇵🇹', JFK:'🇺🇸', CDG:'🇫🇷', PUJ:'🇩🇴', SCL:'🇨🇱' };
+
+  // ---- Scroll contínuo dos cards de oferta (sem reinício perceptível) ----
+  const passesTrack = document.querySelector('.passes');
+  if (passesTrack && !reduceMotion) {
+    let passesPos = 0;
+    let passesPaused = false;
+    const passesSpeed = 64 / 1000; // ~64px por segundo, equivalente ao ritmo anterior
+    let halfWidth = passesTrack.scrollWidth / 2;
+    window.addEventListener('resize', () => { halfWidth = passesTrack.scrollWidth / 2; });
+    passesTrack.addEventListener('mouseenter', () => { passesPaused = true; });
+    passesTrack.addEventListener('mouseleave', () => { passesPaused = false; });
+    let lastTs = null;
+    function stepPasses(ts) {
+      if (lastTs === null) lastTs = ts;
+      const dt = ts - lastTs;
+      lastTs = ts;
+      if (!passesPaused && halfWidth > 0) {
+        passesPos -= passesSpeed * dt;
+        if (passesPos <= -halfWidth) passesPos += halfWidth;
+        passesTrack.style.transform = `translate3d(${passesPos}px,0,0)`;
+      }
+      requestAnimationFrame(stepPasses);
+    }
+    requestAnimationFrame(stepPasses);
+  }
 
   // ---- Relógio do celular ----
   function updatePhoneClock() {
