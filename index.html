@@ -1113,12 +1113,25 @@
 
   // ---- Scroll contínuo dos cards de oferta (sem reinício perceptível) ----
   const passesTrack = document.querySelector('.passes');
-  if (passesTrack && !reduceMotion) {
+  const passesViewport = document.querySelector('.passes-viewport');
+  if (passesTrack && passesViewport && !reduceMotion) {
     let passesPos = 0;
     let passesPaused = false;
     const passesSpeed = 126 / 1000; // ~126px por segundo, equivalente ao ritmo original (16.5s por fileira)
+    const FADE_DIST = 90; // px de zona de esmaecimento em cada borda
     let halfWidth = passesTrack.scrollWidth / 2;
-    window.addEventListener('resize', () => { halfWidth = passesTrack.scrollWidth / 2; });
+    let viewportWidth = passesViewport.clientWidth;
+    let cardBoxes = Array.from(passesTrack.children).map(el => ({
+      el, left: el.offsetLeft, width: el.offsetWidth
+    }));
+    function recalc() {
+      halfWidth = passesTrack.scrollWidth / 2;
+      viewportWidth = passesViewport.clientWidth;
+      cardBoxes = Array.from(passesTrack.children).map(el => ({
+        el, left: el.offsetLeft, width: el.offsetWidth
+      }));
+    }
+    window.addEventListener('resize', recalc);
     passesTrack.addEventListener('mouseenter', () => { passesPaused = true; });
     passesTrack.addEventListener('mouseleave', () => { passesPaused = false; });
     let lastTs = null;
@@ -1130,6 +1143,18 @@
         passesPos -= passesSpeed * dt;
         if (passesPos <= -halfWidth) passesPos += halfWidth;
         passesTrack.style.transform = `translate3d(${passesPos}px,0,0)`;
+        for (const box of cardBoxes) {
+          const screenLeft = passesPos + box.left;
+          const screenRight = screenLeft + box.width;
+          let oR = 1, oL = 1;
+          if (screenLeft >= viewportWidth - FADE_DIST) {
+            oR = Math.max(0, Math.min(1, (viewportWidth - screenLeft) / FADE_DIST));
+          }
+          if (screenRight <= FADE_DIST) {
+            oL = Math.max(0, Math.min(1, screenRight / FADE_DIST));
+          }
+          box.el.style.opacity = Math.min(oR, oL);
+        }
       }
       requestAnimationFrame(stepPasses);
     }
